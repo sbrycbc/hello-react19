@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { use } from 'react';
+import fetchData from '../hooks/useFetchData';
 
-const MyComponent = () => {
+function MyComponent() {
+  const data = use(fetchData('https://jsonplaceholder.typicode.com/todos/1'));
+
   return (
-    <div>MyComponent</div>
-  )
+    <div>
+      <h2>MyComponent</h2>
+      {data ? (
+        <div>Data: {JSON.stringify(data)}</div>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
+  );
 }
 
-export default MyComponent
+export default MyComponent;
+
+
+

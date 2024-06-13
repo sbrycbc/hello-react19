@@ -1,9 +1,9 @@
-import React from 'react'
-
-const useFetchData = () => {
-  return (
-    <div>useFetchData</div>
-  )
+async function fetchData(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
 }
 
-export default useFetchData
+export default fetchData;
